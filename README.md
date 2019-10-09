@@ -19,8 +19,9 @@ $ cd backend && yarn
 $ yarn dev
 ```
 
+Abra uma outra aba no terminal, abra pasta raíz do projeto e rode
 ```
-$ cd .. && cd frontend && yarn
+$ cd frontend && yarn
 $ yarn start
 ```
 
@@ -33,4 +34,4 @@ $ yarn && yarn start
 
 ## Version
 
-1.0.0
+1.0.1
