@@ -5,10 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 
 export default function Profile() {
-  const apiURL =
-    process.env.NODE_ENV === 'production'
-      ? 'https://aircnc-web.herokuapp.com'
-      : 'http://localhost:3000';
+  const apiURL = api.defaults.baseURL;
   const [spots, setSpots] = useState([]);
   const [requests, setRequests] = useState([]);
   const user_id = localStorage.getItem('user');
@@ -52,7 +49,7 @@ export default function Profile() {
 
   return (
     <>
-      <ul className="notifications">
+      <ul className='notifications'>
         {requests.map(request => (
           <li key={request._id}>
             <p>
@@ -61,13 +58,13 @@ export default function Profile() {
               <strong>{request.date}</strong>
             </p>
             <button
-              className="accept"
+              className='accept'
               onClick={() => handleAccept(request._id)}
             >
               ACEITAR
             </button>
             <button
-              className="reject"
+              className='reject'
               onClick={() => handleReject(request._id)}
             >
               REJEITAR
@@ -75,7 +72,7 @@ export default function Profile() {
           </li>
         ))}
       </ul>
-      <ul className="spot-list">
+      <ul className='spot-list'>
         {spots.map(spot => (
           <li key={spot._id}>
             <figure>
@@ -85,11 +82,11 @@ export default function Profile() {
             <span>{spot.price ? `R$${spot.price}/dia` : 'GRATUITO'}</span>
             <details>
               <summary>Tecnologias</summary>
-              <ul className="techs">
+              <ul className='techs'>
                 {spot.techs.map((tech, index) => (
                   <li key={index}>
                     <span>
-                      <span className="check">&#x2713;</span> {tech}
+                      <span className='check'>&#x2713;</span> {tech}
                     </span>
                   </li>
                 ))}
@@ -98,7 +95,7 @@ export default function Profile() {
           </li>
         ))}
       </ul>
-      <Link to="/new" className="btn">
+      <Link to='/new' className='btn'>
         Cadastrar novo spot
       </Link>
     </>

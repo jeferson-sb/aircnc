@@ -23,7 +23,7 @@ export default function New({ history }) {
     data.append('techs', techs);
     data.append('price', price);
 
-    const response = await api.post('/spots', data, {
+    await api.post('/spots', data, {
       headers: { user_id }
     });
 
@@ -33,43 +33,43 @@ export default function New({ history }) {
   return (
     <form onSubmit={handleSubmit}>
       <label
-        id="thumbnail"
+        id='thumbnail'
         style={{ backgroundImage: `url(${preview})` }}
         className={thumbnail ? 'has-thumbnail' : ''}
       >
-        <input type="file" onChange={e => setThumbnail(e.target.files[0])} />
-        <img src={camera} alt="Box with icon camera to upload" />
+        <input type='file' onChange={e => setThumbnail(e.target.files[0])} />
+        <img src={camera} alt='Box with icon camera to upload' />
       </label>
 
-      <label htmlFor="company">EMPRESA *</label>
+      <label htmlFor='company'>EMPRESA *</label>
       <input
-        id="company"
-        placeholder="Sua empresa incrível!"
+        id='company'
+        placeholder='Sua empresa incrível!'
         value={company}
         onChange={e => setCompany(e.target.value)}
       />
 
-      <label htmlFor="company">
+      <label htmlFor='company'>
         TECNOLOGIAS * <span>(separadas por vírgula)</span>
       </label>
       <input
-        id="techs"
-        placeholder="Quais tecnologias usam?"
+        id='techs'
+        placeholder='Quais tecnologias usam?'
         value={techs}
         onChange={e => setTechs(e.target.value)}
       />
 
-      <label htmlFor="company">
+      <label htmlFor='company'>
         VALOR DA DIÁRIA * <span>(em branco para GRATUITO)</span>
       </label>
       <input
-        id="price"
-        placeholder="Qual valor cobrado por dia ?"
+        id='price'
+        placeholder='Qual valor cobrado por dia ?'
         value={price}
         onChange={e => setPrice(e.target.value)}
       />
 
-      <button type="submit" className="btn">
+      <button type='submit' className='btn'>
         Cadastrar
       </button>
     </form>

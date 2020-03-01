@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  apiURL = 'https://aircnc-web.herokuapp.com';
+  apiURL = process.env.APP_URL;
 }
 
 const api = axios.create({
