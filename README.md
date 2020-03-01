@@ -15,6 +15,10 @@ $ git clone https://github.com/jeferson-sb/aircnc.git && cd aircnc
 ```
 
 ```
+Renomeie os arquivos .env.example para .env
+```
+
+```
 $ cd backend && yarn
 $ yarn dev
 ```
@@ -34,4 +38,4 @@ $ yarn && yarn start
 
 ## Version
 
-1.0.1
+1.0.2
