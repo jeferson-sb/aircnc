@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   AsyncStorage,
   Alert,
-  Image
+  Image,
 } from 'react-native';
 
 import api from '../services/api';
@@ -21,12 +21,12 @@ export default function Book({ navigation }) {
   async function handleSubmit() {
     const user_id = await AsyncStorage.getItem('user');
     await api.post(
-      `/spots/${id}/bookings`,
+      `/api/spots/${id}/bookings`,
       {
-        date
+        date,
       },
       {
-        headers: { user_id }
+        headers: { user_id },
       }
     );
 
@@ -44,9 +44,9 @@ export default function Book({ navigation }) {
       <Text style={styles.label}>DATA DE INTERESSE *</Text>
       <TextInput
         style={styles.input}
-        placeholder="Qual data você quer reservar?"
-        placeholderTextColor="#999"
-        autoCapitalize="none"
+        placeholder='Qual data você quer reservar?'
+        placeholderTextColor='#999'
+        autoCapitalize='none'
         autoCorrect={false}
         value={date}
         onChangeText={setDate}
@@ -67,19 +67,19 @@ export default function Book({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 30
+    margin: 30,
   },
   logo: {
     height: 32,
     resizeMode: 'contain',
     alignSelf: 'center',
-    marginTop: 40
+    marginTop: 40,
   },
   label: {
     fontWeight: 'bold',
     color: '#444',
     marginBottom: 8,
-    marginTop: 30
+    marginTop: 30,
   },
   input: {
     borderWidth: 1,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     color: '#444',
     height: 44,
     marginBottom: 20,
-    borderRadius: 2
+    borderRadius: 2,
   },
   button: {
     height: 32,
@@ -97,15 +97,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 2,
-    marginTop: 15
+    marginTop: 15,
   },
   cancelButton: {
     backgroundColor: '#ccc',
-    marginTop: 10
+    marginTop: 10,
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 });

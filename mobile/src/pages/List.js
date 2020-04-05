@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableHighlight,
-  Alert
+  Alert,
 } from 'react-native';
 
 import SpotList from '../components/SpotList';
@@ -17,12 +17,12 @@ export default function List({ navigation }) {
   const [techs, setTechs] = useState([]);
 
   useEffect(() => {
-    AsyncStorage.getItem('user').then(user_id => {
-      const socket = socketio('http://192.168.0.16:3000', {
-        query: { user_id }
+    AsyncStorage.getItem('user').then((user_id) => {
+      const socket = socketio('http://192.168.0.16:3333', {
+        query: { user_id },
       });
 
-      socket.on('booking_response', booking => {
+      socket.on('booking_response', (booking) => {
         Alert.alert(
           `Sua reserva em ${booking.spot.company} em ${booking.date} foi ${
             booking.approved ? 'APROVADA' : 'REJEITADA'
@@ -33,8 +33,9 @@ export default function List({ navigation }) {
   }, []);
 
   useEffect(() => {
-    AsyncStorage.getItem('techs').then(storageTechs => {
-      const techsArr = storageTechs.split(',').map(tech => tech.trim());
+    AsyncStorage.getItem('techs').then((storageTechs) => {
+      console.log(storageTechs);
+      const techsArr = storageTechs.split(',').map((tech) => tech.trim());
       setTechs(techsArr);
     });
   }, []);
@@ -50,7 +51,7 @@ export default function List({ navigation }) {
         <Image style={styles.logo} source={logo}></Image>
       </TouchableHighlight>
       <ScrollView>
-        {techs.map(tech => (
+        {techs.map((tech) => (
           <SpotList key={tech} tech={tech} />
         ))}
       </ScrollView>
@@ -60,13 +61,13 @@ export default function List({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   logo: {
     height: 32,
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: 40,
-    marginBottom: 15
-  }
+    marginBottom: 15,
+  },
 });

@@ -5,7 +5,7 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import api from '../services/api';
@@ -15,8 +15,8 @@ function SpotList({ tech, navigation }) {
 
   useEffect(() => {
     async function loadSpots() {
-      const response = await api.get('/spots', {
-        params: { tech }
+      const response = await api.get('/api/spots', {
+        params: { tech },
       });
       setSpots(response.data);
     }
@@ -36,7 +36,7 @@ function SpotList({ tech, navigation }) {
         <FlatList
           style={styles.list}
           data={spots}
-          keyExtractor={spot => spot._id}
+          keyExtractor={(spot) => spot._id}
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
@@ -44,7 +44,7 @@ function SpotList({ tech, navigation }) {
               <Image
                 style={styles.thumbnail}
                 source={{
-                  uri: item.thumbnail_url.replace('localhost', '192.168.0.16')
+                  uri: item.thumbnail_url.replace('localhost', '192.168.0.16'),
                 }}
               />
               <Text style={styles.company}>{item.company}</Text>
@@ -71,39 +71,39 @@ function SpotList({ tech, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30
+    marginTop: 30,
   },
   title: {
     fontSize: 20,
     color: '#444',
     paddingHorizontal: 20,
-    marginBottom: 15
+    marginBottom: 15,
   },
   bold: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   list: {
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   listItem: {
-    marginRight: 15
+    marginRight: 15,
   },
   thumbnail: {
     width: 200,
     height: 120,
     resizeMode: 'cover',
-    borderRadius: 2
+    borderRadius: 2,
   },
   company: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
-    marginTop: 10
+    marginTop: 10,
   },
   price: {
     fontSize: 15,
     color: '#999',
-    marginTop: 5
+    marginTop: 5,
   },
   button: {
     height: 32,
@@ -111,17 +111,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 2,
-    marginTop: 15
+    marginTop: 15,
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
   },
   message: {
     paddingHorizontal: 20,
-    color: '#ccc'
-  }
+    color: '#ccc',
+  },
 });
 
 export default withNavigation(SpotList);

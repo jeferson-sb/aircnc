@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const localServer = 'http://192.168.0.16:3333';
+
 const api = axios.create({
-  baseURL: 'http://192.168.0.16:3000'
+  baseURL: localServer,
 });
 
 export default api;

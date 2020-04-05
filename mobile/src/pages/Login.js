@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   AsyncStorage,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 import api from '../services/api';
@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
   const [techs, setTechs] = useState('');
 
   useEffect(() => {
-    AsyncStorage.getItem('user').then(user => {
+    AsyncStorage.getItem('user').then((user) => {
       if (user) {
         navigation.navigate('List');
       }
@@ -29,9 +29,9 @@ export default function Login({ navigation }) {
   }, []);
 
   async function handleSubmit() {
-    const response = await api.post('/sessions', {
+    const response = await api.post('/api/sessions', {
       name,
-      email
+      email,
     });
     const { _id } = response.data;
     await AsyncStorage.setItem('user', _id);
@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
   return (
     <KeyboardAvoidingView
       enabled={Platform.OS === 'ios'}
-      behavior="padding"
+      behavior='padding'
       style={styles.container}
     >
       <Image source={logo} />
@@ -51,8 +51,8 @@ export default function Login({ navigation }) {
         <Text style={styles.label}>SEU NOME</Text>
         <TextInput
           style={styles.input}
-          placeholder="Seu nome"
-          placeholderTextColor="#999"
+          placeholder='Seu nome'
+          placeholderTextColor='#999'
           autoCorrect={false}
           onChangeText={setName}
         />
@@ -60,10 +60,10 @@ export default function Login({ navigation }) {
         <Text style={styles.label}>SEU E-MAIL *</Text>
         <TextInput
           style={styles.input}
-          placeholder="Seu e-mail"
-          placeholderTextColor="#999"
-          keyboardType="email-address"
-          autoCapitalize="none"
+          placeholder='Seu e-mail'
+          placeholderTextColor='#999'
+          keyboardType='email-address'
+          autoCapitalize='none'
           autoCorrect={false}
           onChangeText={setEmail}
         />
@@ -71,9 +71,9 @@ export default function Login({ navigation }) {
         <Text style={styles.label}>TECNOLOGIAS *</Text>
         <TextInput
           style={styles.input}
-          placeholder="Teconologias de interesse"
-          placeholderTextColor="#999"
-          autoCapitalize="words"
+          placeholder='Teconologias de interesse'
+          placeholderTextColor='#999'
+          autoCapitalize='words'
           autoCorrect={false}
           onChangeText={setTechs}
         />
@@ -90,17 +90,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   form: {
     alignSelf: 'stretch',
     paddingHorizontal: 30,
-    marginTop: 30
+    marginTop: 30,
   },
   label: {
     fontWeight: 'bold',
     color: '#444',
-    marginBottom: 8
+    marginBottom: 8,
   },
   input: {
     borderWidth: 1,
@@ -110,18 +110,18 @@ const styles = StyleSheet.create({
     color: '#444',
     height: 44,
     marginBottom: 20,
-    borderRadius: 2
+    borderRadius: 2,
   },
   button: {
     height: 42,
     backgroundColor: '#f05a5b',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 2
+    borderRadius: 2,
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
