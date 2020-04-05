@@ -8,19 +8,19 @@ const SpotSchema = new Schema(
     techs: [String],
     user: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
+      ref: 'User',
+    },
   },
   {
     toJSON: {
-      virtuals: true
+      virtuals: true,
     },
-    timestamps: true
+    timestamps: true,
   }
 );
 
-SpotSchema.virtual('thumbnail_url').get(function() {
-  return `${process.env.APP_URL}/files/${this.thumbnail}`;
+SpotSchema.virtual('thumbnail_url').get(function () {
+  return `${process.env.SERVER_URL}/files/${this.thumbnail}`;
 });
 
 module.exports = model('Spot', SpotSchema);

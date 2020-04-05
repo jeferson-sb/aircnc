@@ -13,7 +13,7 @@ export default function New({ history }) {
     return thumbnail ? URL.createObjectURL(thumbnail) : null;
   }, [thumbnail]);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -23,8 +23,8 @@ export default function New({ history }) {
     data.append('techs', techs);
     data.append('price', price);
 
-    await api.post('/spots', data, {
-      headers: { user_id }
+    await api.post('/api/spots', data, {
+      headers: { user_id },
     });
 
     history.push('/profile');
@@ -37,7 +37,7 @@ export default function New({ history }) {
         style={{ backgroundImage: `url(${preview})` }}
         className={thumbnail ? 'has-thumbnail' : ''}
       >
-        <input type='file' onChange={e => setThumbnail(e.target.files[0])} />
+        <input type='file' onChange={(e) => setThumbnail(e.target.files[0])} />
         <img src={camera} alt='Box with icon camera to upload' />
       </label>
 
@@ -46,7 +46,7 @@ export default function New({ history }) {
         id='company'
         placeholder='Sua empresa incrível!'
         value={company}
-        onChange={e => setCompany(e.target.value)}
+        onChange={(e) => setCompany(e.target.value)}
       />
 
       <label htmlFor='company'>
@@ -56,7 +56,7 @@ export default function New({ history }) {
         id='techs'
         placeholder='Quais tecnologias usam?'
         value={techs}
-        onChange={e => setTechs(e.target.value)}
+        onChange={(e) => setTechs(e.target.value)}
       />
 
       <label htmlFor='company'>
@@ -66,7 +66,7 @@ export default function New({ history }) {
         id='price'
         placeholder='Qual valor cobrado por dia ?'
         value={price}
-        onChange={e => setPrice(e.target.value)}
+        onChange={(e) => setPrice(e.target.value)}
       />
 
       <button type='submit' className='btn'>

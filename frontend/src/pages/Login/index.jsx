@@ -5,9 +5,9 @@ export default function Login({ history }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await api.post('/sessions', { name, email });
+    const res = await api.post('/api/sessions', { name, email });
     const { _id } = res.data;
     localStorage.setItem('user', _id);
     history.push('/profile');
@@ -21,23 +21,23 @@ export default function Login({ history }) {
       </p>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nome</label>
+        <label htmlFor='name'>Nome</label>
         <input
-          type="text"
-          id="name"
-          placeholder="Seu nome"
-          autoComplete="off"
-          onChange={e => setName(e.target.value)}
+          type='text'
+          id='name'
+          placeholder='Seu nome'
+          autoComplete='off'
+          onChange={(e) => setName(e.target.value)}
         />
-        <label htmlFor="email">E-mail *</label>
+        <label htmlFor='email'>E-mail *</label>
         <input
-          type="email"
-          id="email"
-          placeholder="Seu e-mail"
-          autoComplete="off"
-          onChange={e => setEmail(e.target.value)}
+          type='email'
+          id='email'
+          placeholder='Seu e-mail'
+          autoComplete='off'
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit" className="btn">
+        <button type='submit' className='btn'>
           Cadastrar
         </button>
       </form>

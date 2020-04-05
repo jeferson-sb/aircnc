@@ -12,13 +12,13 @@ export default function Profile() {
   const socket = useMemo(
     () =>
       socketio(apiURL, {
-        query: { user_id }
+        query: { user_id },
       }),
-    [user_id]
+    [user_id, apiURL]
   );
 
   useEffect(() => {
-    socket.on('booking_request', data => {
+    socket.on('booking_request', (data) => {
       setRequests([...requests, data]);
     });
   }, [requests, socket]);
@@ -26,10 +26,10 @@ export default function Profile() {
   useEffect(() => {
     async function loadSpots() {
       const user_id = localStorage.getItem('user');
-      const response = await api.get('/profile', {
+      const response = await api.get('/api/profile', {
         headers: {
-          user_id
-        }
+          user_id,
+        },
       });
 
       setSpots(response.data);
@@ -38,19 +38,20 @@ export default function Profile() {
   }, []);
 
   async function handleAccept(id) {
-    await api.post(`/bookings/${id}/approvals`);
-    setRequests(requests.filter(request => request._id !== id));
+    await api.post(`/api/bookings/${id}/approvals`);
+    setRequests(requests.filter((request) => request._id !== id));
   }
 
   async function handleReject(id) {
-    await api.post(`/bookings/${id}/rejections`);
-    setRequests(requests.filter(request => request._id !== id));
+    await api.post(`/api/bookings/${id}/rejections`);
+    setRequests(requests.filter((request) => request._id !== id));
   }
 
   return (
     <>
+      {!spots.length && <p>Você não tem nenhum spot cadastrado no momento.</p>}
       <ul className='notifications'>
-        {requests.map(request => (
+        {requests.map((request) => (
           <li key={request._id}>
             <p>
               <strong>{request.user.name}</strong> está solicitando uma reserva
@@ -73,7 +74,7 @@ export default function Profile() {
         ))}
       </ul>
       <ul className='spot-list'>
-        {spots.map(spot => (
+        {spots.map((spot) => (
           <li key={spot._id}>
             <figure>
               <img src={spot.thumbnail_url} alt={`${spot.company} Space`} />
