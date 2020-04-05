@@ -1,30 +1,28 @@
 {
   "expo": {
-    "name": "AirCnC",
-    "slug": "mobile",
+    "name": "aircnc",
+    "slug": "aircnc",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f05a5b"
+    },
+    "android": {
+      "package": "com.jefersonsb.devradar"
+    },
+    "ios": {
+      "bundleIdentifier": "com.jefersonsb.devradar",
+      "supportsTablet": true
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    "assetBundlePatterns": ["**/*"]
   }
 }
