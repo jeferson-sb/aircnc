@@ -1,6 +1,10 @@
 const dotenv = require('dotenv');
 dotenv.config({ path: './src/config/.env' });
+const connectDB = require('./db');
 
 module.exports = {
-  mongodb_uri: process.env.MONGODB_URI
+  mode: process.env.NODE_ENV,
+  port: process.env.PORT || 3333,
+  dbUrl: process.env.MONGODB_URL,
+  connectDB,
 };

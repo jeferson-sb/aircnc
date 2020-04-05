@@ -1,6 +1,5 @@
 const Booking = require('../models/Booking');
 const Spot = require('../models/Spot');
-const User = require('../models/User');
 
 const store = async (req, res) => {
   const { user_id } = req.headers;
@@ -8,7 +7,7 @@ const store = async (req, res) => {
   const { date } = req.body;
 
   const spotExists = await Spot.findOne({
-    $and: [{ _id: spot_id }, { user: { $ne: user_id } }]
+    $and: [{ _id: spot_id }, { user: { $ne: user_id } }],
   });
 
   if (!spotExists) {
@@ -20,13 +19,10 @@ const store = async (req, res) => {
   const booking = await Booking.create({
     user: user_id,
     spot: spot_id,
-    date
+    date,
   });
 
-  await booking
-    .populate('spot')
-    .populate('user')
-    .execPopulate();
+  await booking.populate('spot').populate('user').execPopulate();
 
   const ownerSocket = req.connectedUsers[booking.spot.user];
 
