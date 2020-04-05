@@ -19,6 +19,7 @@ function SpotList({ tech, navigation }) {
         params: { tech },
       });
       setSpots(response.data);
+      console.log(response.data);
     }
     loadSpots();
   }, []);
@@ -44,7 +45,7 @@ function SpotList({ tech, navigation }) {
               <Image
                 style={styles.thumbnail}
                 source={{
-                  uri: item.thumbnail_url.replace('localhost', '192.168.0.16'),
+                  uri: item.thumbnail_url,
                 }}
               />
               <Text style={styles.company}>{item.company}</Text>

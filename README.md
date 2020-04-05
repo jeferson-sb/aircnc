@@ -1,10 +1,11 @@
 <div align="center">
   <img src=".github/logo.png" alt="logo aircnc">
   <h2>☕ Code and Coffee</h2>
-  <img src=".github/mockup.png" alt="aircnc project">
 
 ![](https://img.shields.io/badge/omnistack-9-blueviolet?style=flat-square)
 ![alt release](https://img.shields.io/github/v/release/jeferson-sb/aircnc?style=flat-square)
+
+  <img src=".github/mockup.png" alt="aircnc project">
 
 </div>
 

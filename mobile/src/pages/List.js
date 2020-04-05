@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
+import { API_URL } from 'react-native-dotenv';
 
 import SpotList from '../components/SpotList';
 import logo from '../assets/logo.png';
@@ -18,7 +19,7 @@ export default function List({ navigation }) {
 
   useEffect(() => {
     AsyncStorage.getItem('user').then((user_id) => {
-      const socket = socketio('http://192.168.0.16:3333', {
+      const socket = socketio(API_URL, {
         query: { user_id },
       });
 
