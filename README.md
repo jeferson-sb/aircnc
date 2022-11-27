@@ -9,50 +9,45 @@
 
 </div>
 
-## 💡 Projeto
+## 💡 Project
 
-Inspirado no Airbnb. A ideia do projeto é conectar empresas e desenvolvedores que procuram um lugar em comum para se conhecer
-
-## 💻 Demo
-
-[https://aircnc-web.herokuapp.com/](https://aircnc-web.herokuapp.com/)
-
-### 📱 App
-
-[Download para Android](https://github.com/jeferson-sb/aircnc/releases/tag/1.0.0)
+Inspired by Airbnb. The idea of the project is to connect companies and developers looking for a common place to get to know each other
 
 ## 🚀 Quick start
 
-### Instalação
+### Pre-requesites
 
-```bash
-$ git clone https://github.com/jeferson-sb/aircnc.git && cd aircnc
-$ cd backend && yarn
-```
+- Node.js >=18
+- [MongoDB](https://www.mongodb.com/download-center)
+- MongoDB Client: [Compass](https://www.mongodb.com/products/compass)
+- React Native: [See the environtment setup to react native](https://reactnative.dev/docs/environment-setup)
 
-```bash
-$ cd .. & cd frontend
-$ yarn
-```
-
-### Utilização
+### Installation
 
 ```
-Renomeie os arquivos .env.example para .env
+$ npm install -g pnpm
+$ pnpm install
 ```
 
-```bash
-$ cd backend
-$ yarn dev
+Prepare environment variables
+
+```
+$ chmod +x ./scripts/*.sh 
+$ pnpm cp-dev
 ```
 
-Abra uma outra aba no terminal, abra pasta raíz do projeto e rode
+### Usage
 
-```bash
-$ cd frontend
-$ yarn start
+Run the backend development server at localhost:8080
+```
+$ pnpm server:dev
 ```
 
-## 📝 Licença
+Run the client at localhost:5173
+```
+$ pnpm web:dev
+```
 
-Este projeto está sob a licença [MIT](https://github.com/jeferson-sb/aircnc/blob/master/LICENSE)
+## 📝 License
+
+This project is under the [MIT](https://github.com/jeferson-sb/aircnc/blob/master/LICENSE) license.
